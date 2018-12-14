@@ -12,14 +12,24 @@ class Board extends Component {
     super();
 
     this.state = {
-      cards: [],
+      cards: CARD_DATA
     };
   }
 
+
   render() {
+    const emoji = require("emoji-dictionary");
+    const messages = this.state.cards.cards
+    console.log(messages);
+    const messageCollection = messages.map((message, i) => {
+      return <Card
+        text={message.text}
+        emoji={emoji.getUnicode(`${message.emoji}`)}
+        />
+    });
     return (
       <div>
-        Board
+        {messageCollection}
       </div>
     )
   }
