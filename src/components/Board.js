@@ -12,19 +12,33 @@ class Board extends Component {
     super();
 
     this.state = {
-      cards: CARD_DATA
+      cards: []
     };
   }
-
+componentDidMount() {
+  axios.get('https://inspiration-board.herokuapp.com/boards/Semret/cards')
+  .then((response) => {
+    this.setState({
+      cards: response.data
+    });
+  })
+  .catch((error) => {
+    this.setState({
+      error: error.message
+    });
+  })
+}
 
   render() {
     const emoji = require("emoji-dictionary");
-    const messages = this.state.cards.cards
+
+    const messages = this.state.cards
     console.log(messages);
     const messageCollection = messages.map((message, i) => {
       return <Card
-        text={message.text}
-        emoji={emoji.getUnicode(`${message.emoji}`)}
+        key={i}
+        text={message.card.text}
+        emoji={emoji.getUnicode(`${message.card.emoji}`)}
         />
     });
     return (
