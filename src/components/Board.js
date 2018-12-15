@@ -28,6 +28,25 @@ componentDidMount() {
     });
   })
 }
+  deleteThisCard = (id) => {
+    console.log("a specific card is being deleted");
+    let updatedCards = this.state.cards
+    console.log(updatedCards.length);
+    axios.delete(`https://inspiration-board.herokuapp.com/cards/${id}`)
+    .then((response) => {
+
+      const filteredCards = updatedCards.filter(({card}) => card.id !== id )
+      console.log(filteredCards.length);
+      this.setState({
+        cards: filteredCards
+      });
+    })
+    .catch((error) => {
+      this.setState({
+        error: error.message
+      });
+    })
+  }
 
   render() {
     const emoji = require("emoji-dictionary");
@@ -37,8 +56,10 @@ componentDidMount() {
     const messageCollection = messages.map((message, i) => {
       return <Card
         key={i}
+        id={message.card.id}
         text={message.card.text}
         emoji={emoji.getUnicode(`${message.card.emoji}`)}
+        deleteCardCallback={this.deleteThisCard}
         />
     });
     return (
@@ -47,7 +68,6 @@ componentDidMount() {
       </div>
     )
   }
-
 }
 
 Board.propTypes = {
