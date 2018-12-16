@@ -11,12 +11,14 @@
   border-radius: 5px;
 
   display: grid;
-  grid-template-columns: 1fr 5fr 1fr;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 2fr 1fr;
   align-items: center;
 }
 
 .card__content {
   grid-column-start: 2;
+  grid-row-start: 2;
 
   display: flex;
   flex-direction: column;
@@ -42,6 +44,9 @@
 }
 
 .card__delete {
-  align-self: start;
+  grid-column-start: 3;
+  grid-row-start: 1;
+  justify-self: end;
+
   font-family: 'Permanent Marker', Helvetica, sans-serif;
 }

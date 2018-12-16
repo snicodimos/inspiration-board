@@ -14,16 +14,20 @@ class Card extends Component {
   render() {
     return (
       <div className="card">
-        <div>
-          {this.props.text}
-        </div>
-        <div>
-          {this.props.emoji}
-        </div>
-        <button
-          onClick={ this.deleteCardClickHandler }>
-          Delete
-        </button>
+        <section className="card__content">
+          <div className="card__content-text">
+            {this.props.text}
+          </div>
+          <div className="card__content-emoji">
+            {this.props.emoji}
+          </div>
+        </section>
+          <div className="card__delete">
+            <button
+              onClick={ this.deleteCardClickHandler }>
+              Delete
+            </button>
+          </div>
       </div>
     )
   }

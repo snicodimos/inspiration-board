@@ -9,10 +9,13 @@ class App extends Component {
         <header className="header">
           <h1 className="header__h1"><span className="header__text">Inspiration Board</span></h1>
         </header>
-        <Board
-          url="https://inspiration-board.herokuapp.com/boards/"
-          boardName={`Ada-Lovelace`}
-          />
+        <section className="board-container">
+          <Board
+            className="board-contents"
+            url="https://inspiration-board.herokuapp.com/boards/"
+            boardName={`Ada-Lovelace`}
+            />
+        </section>
       </section>
     );
   }

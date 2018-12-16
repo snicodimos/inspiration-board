@@ -9,6 +9,7 @@
 .new-card-form__header {
   text-align: center;
   text-transform: uppercase;
+  row-span: all;
 }
 
 .new-card-form__form {
@@ -34,7 +35,14 @@
 }
 
 .new-card-form__form-button {
-  background-color: inherit;
+  background-color: seashell;
   border: 1px solid black;
   font-size: 1em;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: auto;
+  border: solid 2px red;
 }

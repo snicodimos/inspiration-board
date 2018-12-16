@@ -33,3 +33,14 @@ h1, h2 {
 
   transform: rotate(-3deg) skew(-3deg);
 }
+
+.board-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.board-contents {
+
+}

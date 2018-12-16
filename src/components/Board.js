@@ -15,19 +15,19 @@ class Board extends Component {
       cards: []
     };
   }
-componentDidMount() {
-  axios.get('https://inspiration-board.herokuapp.com/boards/Semret/cards')
-  .then((response) => {
-    this.setState({
-      cards: response.data
-    });
-  })
-  .catch((error) => {
-    this.setState({
-      error: error.message
-    });
-  })
-}
+  componentDidMount() {
+    axios.get('https://inspiration-board.herokuapp.com/boards/Semret/cards')
+    .then((response) => {
+      this.setState({
+        cards: response.data
+      });
+    })
+    .catch((error) => {
+      this.setState({
+        error: error.message
+      });
+    })
+  }
   deleteThisCard = (id) => {
     console.log("a specific card is being deleted");
     const updatedCards = this.state.cards
@@ -81,11 +81,14 @@ componentDidMount() {
     });
     return (
       <div>
-        {messageCollection}
-
-        <NewCardForm
-          addNewCardToCollection={this.addNewCard}
-          />
+        <section className="form-section">
+          <NewCardForm
+            addNewCardToCollection={this.addNewCard}
+            />
+        </section>
+        <section className="board">
+          {messageCollection}
+        </section>
       </div>
     )
   }
