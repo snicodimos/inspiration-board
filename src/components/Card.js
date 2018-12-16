@@ -5,9 +5,10 @@ import emoji from 'emoji-dictionary';
 import './Card.css';
 
 class Card extends Component {
+
   deleteCardClickHandler = (event) => {
     console.log("The delete button was clicked");
-    
+
     this.props.deleteCardCallback(this.props.id);
   }
   render() {
@@ -20,7 +21,7 @@ class Card extends Component {
           {this.props.emoji}
         </div>
         <button
-          onClick={ this.deleteCardClickHandler}>
+          onClick={ this.deleteCardClickHandler }>
           Delete
         </button>
       </div>
