@@ -30,7 +30,7 @@ componentDidMount() {
 }
   deleteThisCard = (id) => {
     console.log("a specific card is being deleted");
-    let updatedCards = this.state.cards
+    const updatedCards = this.state.cards
     console.log(updatedCards.length);
     axios.delete(`https://inspiration-board.herokuapp.com/cards/${id}`)
     .then((response) => {
@@ -48,10 +48,28 @@ componentDidMount() {
     })
   }
 
+  addNewCard = (newCard) => {
+    console.log("adding new card", newCard);
+    const updateCards = [...this.state.cards, newCard]
+
+    axios.post(`https://inspiration-board.herokuapp.com/boards/Semret/cards?text=${newCard.card.text}&emoji=${newCard.card.emoji}`)
+    .then((response) => {
+      this.setState({
+        cards: updateCards
+      });
+    })
+    .catch((error) => {
+      this.setState({
+        error: error.message
+      });
+    })
+  }
+
   render() {
     const emoji = require("emoji-dictionary");
 
     const messages = this.state.cards
+
     console.log(messages);
     const messageCollection = messages.map((message, i) => {
       return <Card
@@ -65,6 +83,10 @@ componentDidMount() {
     return (
       <div>
         {messageCollection}
+
+        <NewCardForm
+          addNewCardToCollection={this.addNewCard}
+          />
       </div>
     )
   }
