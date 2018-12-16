@@ -56,13 +56,13 @@ class NewCardForm extends Component {
         <form
           className="new-card-form"
           onSubmit={this.onFormSubmit}>
-          <label for="text">Your Message</label>
+          <label htmlFor="text">Your Message</label>
           <textarea
             className="new-card-form__form-textarea"
             name="text"
             value={this.state.text}
             onChange={this.onInputChange}/>
-          <label for="emoji"> Emoji</label>
+          <label htmlFor="emoji"> Emoji</label>
           <input
             className="new-card-form__form-select"
             name="emoji"
