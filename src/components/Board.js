@@ -70,7 +70,6 @@ componentDidMount() {
 
     const messages = this.state.cards
 
-    console.log(messages);
     const messageCollection = messages.map((message, i) => {
       return <Card
         key={i}
